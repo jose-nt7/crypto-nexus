@@ -122,3 +122,58 @@ export async function buscarHistoricoCripto(
       preco
     }));
 }
+
+export async function buscarDetalhesCripto(moedaId, signal) {
+  const moedasPermitidas = [
+    'bitcoin',
+    'ethereum',
+    'litecoin',
+    'solana',
+    'cardano',
+    'dogecoin'
+  ];
+
+  if (!moedasPermitidas.includes(moedaId)) {
+    throw new Error('Criptomoeda não encontrada.');
+  }
+
+  const parametros = new URLSearchParams({
+    localization: 'false',
+    tickers: 'false',
+    market_data: 'true',
+    community_data: 'false',
+    developer_data: 'false',
+    sparkline: 'false'
+  });
+
+  const resposta = await fetch(
+    `https://api.coingecko.com/api/v3/coins/${moedaId}?${parametros}`,
+    {
+      signal,
+      headers: {
+        Accept: 'application/json'
+      }
+    }
+  );
+
+  if (!resposta.ok) {
+    throw new Error(`Erro ao consultar detalhes: HTTP ${resposta.status}`);
+  }
+
+  const dados = await resposta.json();
+
+  return {
+    id: dados.id,
+    nome: dados.name,
+    simbolo: dados.symbol.toUpperCase(),
+    imagem: dados.image?.large,
+    ranking: dados.market_cap_rank,
+    preco: dados.market_data?.current_price?.usd,
+    variacao24h: dados.market_data?.price_change_percentage_24h,
+    mercado: dados.market_data?.market_cap?.usd,
+    volume24h: dados.market_data?.total_volume?.usd,
+    maxima24h: dados.market_data?.high_24h?.usd,
+    minima24h: dados.market_data?.low_24h?.usd,
+    atualizadoEm: dados.market_data?.last_updated
+  };
+}

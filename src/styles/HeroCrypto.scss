@@ -194,6 +194,11 @@
 .crypto-hero__tag {
   color: #c4b5fd;
   font-size: 0.8rem;
+  text-decoration: none;
+cursor: pointer;
+&:hover {
+  text-decoration: underline;
+}
 }
 
 .crypto-hero__disclaimer {

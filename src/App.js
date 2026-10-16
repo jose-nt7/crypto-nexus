@@ -8,6 +8,7 @@ import Cadastro from './pages/auth/cadastro';
 import Login from './pages/auth/login';
 import Planos from './pages/Planos/Planos';
 import Criptoativos from './pages/Criptoativos/Criptoativos';
+import DetalhesCripto from './pages/Criptoativos/DetalhesCripto';
 
 import {
   BrowserRouter as Router,
@@ -25,6 +26,7 @@ function App() {
           <Route path="/Login" element={<Login />} />
           <Route path="/Planos" element={<Planos />} />
           <Route path="/Criptoativos" element={<Criptoativos />} />
+          <Route path="/Criptoativos/:id" element={<DetalhesCripto />} />
         </Routes>
       </div>
     </Router>

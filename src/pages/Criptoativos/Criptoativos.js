@@ -1,12 +1,17 @@
 
 import React, { useEffect, useMemo, useState } from 'react';
+import { Link } from 'react-router-dom';
+
 import NavBar from '../../components/layout/NavBar';
 import Footer from '../../components/layout/Footer';
 import GraficoCripto from './GraficoCripto';
+
 import { buscarCriptomoedas } from '../../services/cryptoApi';
+import { obterFavoritos, alternarFavorito } from '../../utils/favoritos';
+
 import './Criptoativos.scss';
 
-// Dados fictícios utilizados quando a API estiver indisponível.
+// Dados fictícios usados quando a API estiver indisponível.
 const moedasDemo = [
   { id: 'bitcoin', nome: 'Bitcoin', simbolo: 'BTC', icone: '₿', cor: '#f7931a', preco: 65000, variacao: 2.5, mercado: 1280 },
   { id: 'ethereum', nome: 'Ethereum', simbolo: 'ETH', icone: 'Ξ', cor: '#627eea', preco: 3200, variacao: 1.8, mercado: 385 },
@@ -16,6 +21,7 @@ const moedasDemo = [
   { id: 'dogecoin', nome: 'Dogecoin', simbolo: 'DOGE', icone: 'Ð', cor: '#c2a633', preco: 0.12, variacao: 3.1, mercado: 17 }
 ];
 
+// Formatação dos preços.
 const formatarPreco = (valor) =>
   new Intl.NumberFormat('pt-BR', {
     style: 'currency',
@@ -24,6 +30,7 @@ const formatarPreco = (valor) =>
     maximumFractionDigits: valor < 1 ? 4 : 2
   }).format(valor);
 
+// Formatação da capitalização de mercado.
 const formatarMercado = (valor, modoDemo) => {
   if (modoDemo) {
     return `US$ ${valor.toLocaleString('pt-BR')} bi`;
@@ -38,16 +45,22 @@ const formatarMercado = (valor, modoDemo) => {
 };
 
 export default function Criptoativos() {
+  // Pesquisa e filtros.
   const [pesquisa, setPesquisa] = useState('');
   const [filtro, setFiltro] = useState('todas');
   const [ordenacao, setOrdenacao] = useState('mercado');
 
+  // Sistema de favoritos.
+  const [favoritos, setFavoritos] = useState(obterFavoritos);
+  const [somenteFavoritos, setSomenteFavoritos] = useState(false);
+
+  // Dados da API.
   const [moedas, setMoedas] = useState(moedasDemo);
   const [carregando, setCarregando] = useState(true);
   const [modoDemo, setModoDemo] = useState(true);
   const [erroApi, setErroApi] = useState('');
 
-  // Consulta a CoinGecko ao abrir a página.
+  // Busca as criptomoedas na CoinGecko.
   useEffect(() => {
     const controller = new AbortController();
 
@@ -82,7 +95,13 @@ export default function Criptoativos() {
     return () => controller.abort();
   }, []);
 
-  // Pesquisa, filtros e ordenação.
+  // Adiciona ou remove uma moeda dos favoritos.
+  const handleFavorito = (moedaId) => {
+    const novosFavoritos = alternarFavorito(moedaId);
+    setFavoritos(novosFavoritos);
+  };
+
+  // Aplica pesquisa, filtros e ordenação.
   const moedasFiltradas = useMemo(() => {
     const termo = pesquisa.trim().toLowerCase();
 
@@ -99,7 +118,14 @@ export default function Criptoativos() {
           (filtro === 'alta' && variacao > 0) ||
           (filtro === 'baixa' && variacao < 0);
 
-        return correspondePesquisa && correspondeFiltro;
+        const correspondeFavoritos =
+          !somenteFavoritos || favoritos.includes(moeda.id);
+
+        return (
+          correspondePesquisa &&
+          correspondeFiltro &&
+          correspondeFavoritos
+        );
       })
       .sort((a, b) => {
         if (ordenacao === 'nome') {
@@ -116,7 +142,14 @@ export default function Criptoativos() {
 
         return (b.mercado ?? 0) - (a.mercado ?? 0);
       });
-  }, [moedas, pesquisa, filtro, ordenacao]);
+  }, [
+    moedas,
+    pesquisa,
+    filtro,
+    ordenacao,
+    favoritos,
+    somenteFavoritos
+  ]);
 
   return (
     <>
@@ -132,16 +165,14 @@ export default function Criptoativos() {
           <h1>Explore os Criptoativos</h1>
 
           <p>
-            Conheça os principais ativos digitais, pesquise moedas
-            e explore informações em um ambiente educativo.
+            Conheça os principais ativos digitais, pesquise moedas,
+            acompanhe o mercado e salve suas criptomoedas favoritas.
           </p>
 
-          {/* Status da conexão com a API */}
+          {/* Status da API */}
           <div className="criptoativos-notice" role="status">
             {carregando ? (
-              <span>
-                Consultando preços na CoinGecko...
-              </span>
+              <span>Consultando preços na CoinGecko...</span>
             ) : modoDemo ? (
               <span>
                 <strong>Modo demonstração:</strong> os preços,
@@ -156,11 +187,13 @@ export default function Criptoativos() {
             )}
           </div>
 
-          {/* Tabela de criptomoedas */}
+          {/* Mercado de criptomoedas */}
           <section
             className="crypto-market"
             aria-label="Tabela de criptomoedas"
           >
+
+            {/* Cabeçalho com contador de favoritos */}
             <div className="crypto-market-header">
               <div>
                 <h2>Visão geral do mercado</h2>
@@ -169,9 +202,14 @@ export default function Criptoativos() {
                   {moedasFiltradas.length} criptomoeda(s) encontrada(s)
                 </span>
               </div>
+
+              <div className="crypto-favorites-counter">
+                <span aria-hidden="true">★</span>
+                <span>{favoritos.length} favorito(s)</span>
+              </div>
             </div>
 
-            {/* Pesquisa e filtros */}
+            {/* Pesquisa e ordenação */}
             <div className="crypto-market-filters">
               <input
                 type="search"
@@ -196,22 +234,27 @@ export default function Criptoativos() {
                 value={ordenacao}
                 onChange={(e) => setOrdenacao(e.target.value)}
               >
-                <option value="mercado">
-                  Maior valor de mercado
-                </option>
-
-                <option value="preco">
-                  Maior preço
-                </option>
-
-                <option value="variacao">
-                  Maior variação
-                </option>
-
-                <option value="nome">
-                  Nome (A-Z)
-                </option>
+                <option value="mercado">Maior valor de mercado</option>
+                <option value="preco">Maior preço</option>
+                <option value="variacao">Maior variação</option>
+                <option value="nome">Nome (A-Z)</option>
               </select>
+            </div>
+
+            {/* Mostrar somente favoritos */}
+            <div className="crypto-favorites-filter">
+              <label className="crypto-favorites-label">
+                <input
+                  type="checkbox"
+                  checked={somenteFavoritos}
+                  onChange={(e) =>
+                    setSomenteFavoritos(e.target.checked)
+                  }
+                />
+
+                <span aria-hidden="true">★</span>
+                Mostrar somente favoritos
+              </label>
             </div>
 
             {/* Tabela */}
@@ -229,12 +272,14 @@ export default function Criptoativos() {
                 <tbody>
                   {moedasFiltradas.map((moeda) => {
                     const variacao = moeda.variacao ?? 0;
+                    const ehFavorita = favoritos.includes(moeda.id);
 
                     return (
                       <tr key={moeda.id}>
                         <td>
                           <div className="crypto-coin">
 
+                            {/* Ícone da criptomoeda */}
                             {modoDemo || !moeda.imagem ? (
                               <span
                                 className="crypto-coin-icon"
@@ -259,20 +304,51 @@ export default function Criptoativos() {
                               />
                             )}
 
+                            {/* Nome e símbolo */}
                             <div>
-                              <strong>{moeda.nome}</strong>
+                              <Link
+                                to={`/Criptoativos/${moeda.id}`}
+                                className="crypto-coin-link"
+                              >
+                                {moeda.nome}
+                              </Link>
+
                               <small>{moeda.simbolo}</small>
                             </div>
+
+                            {/* Estrela de favoritos */}
+                            <button
+                              type="button"
+                              className={`crypto-favorite-btn ${
+                                ehFavorita ? 'is-favorite' : ''
+                              }`}
+                              onClick={() => handleFavorito(moeda.id)}
+                              aria-label={
+                                ehFavorita
+                                  ? `Remover ${moeda.nome} dos favoritos`
+                                  : `Adicionar ${moeda.nome} aos favoritos`
+                              }
+                              aria-pressed={ehFavorita}
+                              title={
+                                ehFavorita
+                                  ? 'Remover dos favoritos'
+                                  : 'Adicionar aos favoritos'
+                              }
+                            >
+                              {ehFavorita ? '★' : '☆'}
+                            </button>
 
                           </div>
                         </td>
 
+                        {/* Preço */}
                         <td>
                           {moeda.preco == null
                             ? 'Indisponível'
                             : formatarPreco(moeda.preco)}
                         </td>
 
+                        {/* Variação em 24 horas */}
                         <td>
                           {moeda.variacao == null ? (
                             <span>Indisponível</span>
@@ -290,6 +366,7 @@ export default function Criptoativos() {
                           )}
                         </td>
 
+                        {/* Valor de mercado */}
                         <td>
                           {moeda.mercado == null
                             ? 'Indisponível'
@@ -304,15 +381,18 @@ export default function Criptoativos() {
                 </tbody>
               </table>
 
+              {/* Nenhum resultado */}
               {moedasFiltradas.length === 0 && (
                 <p className="crypto-empty">
-                  Nenhuma criptomoeda encontrada.
+                  {somenteFavoritos
+                    ? 'Nenhuma criptomoeda favorita encontrada.'
+                    : 'Nenhuma criptomoeda encontrada.'}
                 </p>
               )}
             </div>
           </section>
 
-          {/* Gráfico permanece demonstrativo nesta etapa */}
+          {/* Gráfico histórico */}
           <GraficoCripto />
 
         </div>
@@ -322,3 +402,4 @@ export default function Criptoativos() {
     </>
   );
 }
+

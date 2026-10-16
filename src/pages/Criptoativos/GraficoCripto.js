@@ -36,13 +36,16 @@ const formatarData = (timestamp, periodo) =>
     timeZone: 'UTC'
   }).format(new Date(timestamp));
 
-export default function GraficoCripto() {
-  const [moeda, setMoeda] = useState('bitcoin');
+export default function GraficoCripto({ moedaInicial = 'bitcoin' }) {
+  const [moeda, setMoeda] = useState(moedaInicial);
   const [periodo, setPeriodo] = useState(7);
   const [historico, setHistorico] = useState([]);
   const [carregando, setCarregando] = useState(true);
   const [erro, setErro] = useState('');
 
+  useEffect(() => {
+  setMoeda(moedaInicial);
+}, [moedaInicial]);
   useEffect(() => {
     const controller = new AbortController();
 
