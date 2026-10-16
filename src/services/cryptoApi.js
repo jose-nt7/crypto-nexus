@@ -51,3 +51,74 @@ export async function buscarCriptomoedas(signal) {
     atualizadoEm: moeda.last_updated
   }));
 }
+
+/**
+ * Consulta o histórico de preços de uma criptomoeda.
+ * Os dados são fornecidos pela CoinGecko.
+ *
+ * @param {string} moedaId - ID da criptomoeda
+ * @param {number} dias - Período do histórico
+ * @param {AbortSignal} signal - Permite cancelar a requisição
+ */
+export async function buscarHistoricoCripto(
+  moedaId,
+  dias = 7,
+  signal
+) {
+  const moedasPermitidas = [
+    'bitcoin',
+    'ethereum',
+    'litecoin',
+    'solana',
+    'cardano',
+    'dogecoin'
+  ];
+
+  if (!moedasPermitidas.includes(moedaId)) {
+    throw new Error('Criptomoeda não suportada.');
+  }
+
+  if (![7, 30].includes(dias)) {
+    throw new Error('Período não suportado.');
+  }
+
+  const parametros = new URLSearchParams({
+    vs_currency: 'usd',
+    days: String(dias)
+  });
+
+  const url =
+    `https://api.coingecko.com/api/v3/coins/${moedaId}/market_chart?${parametros}`;
+
+  const resposta = await fetch(url, {
+    method: 'GET',
+    headers: {
+      Accept: 'application/json'
+    },
+    signal
+  });
+
+  if (!resposta.ok) {
+    throw new Error(
+      `Erro ao consultar histórico: HTTP ${resposta.status}`
+    );
+  }
+
+  const dados = await resposta.json();
+
+  if (!Array.isArray(dados.prices) || dados.prices.length === 0) {
+    throw new Error('Histórico de preços indisponível.');
+  }
+
+  return dados.prices
+    .filter(
+      (item) =>
+        Array.isArray(item) &&
+        Number.isFinite(item[0]) &&
+        Number.isFinite(item[1])
+    )
+    .map(([timestamp, preco]) => ({
+      timestamp,
+      preco
+    }));
+}

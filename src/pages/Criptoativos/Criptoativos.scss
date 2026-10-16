@@ -313,3 +313,59 @@
     }
   }
 }
+
+/* Controles e estados do gráfico real */
+
+.crypto-chart-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+
+  select {
+    min-width: 165px;
+    padding: 12px 14px;
+    background: #0d0a14;
+    color: #fff;
+    border: 1px solid #40334f;
+    border-radius: 10px;
+    outline: none;
+
+    &:focus {
+      border-color: #a78bfa;
+    }
+  }
+}
+
+.crypto-chart-message {
+  min-height: 280px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 10px;
+  color: #c4b5fd;
+  background: rgba(13, 10, 20, 0.5);
+  border-radius: 14px;
+  padding: 24px;
+
+  p {
+    color: #e9d5ff;
+    margin: 0;
+  }
+
+  small {
+    color: #a99fb8;
+  }
+}
+
+@media (max-width: 600px) {
+  .crypto-chart-controls {
+    width: 100%;
+    flex-direction: column;
+
+    select {
+      width: 100%;
+    }
+  }
+}
