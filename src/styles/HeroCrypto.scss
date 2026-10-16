@@ -1,0 +1,241 @@
+
+.crypto-hero {
+  min-height: 90vh;
+  padding: 150px 7% 100px;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  align-items: center;
+  gap: 60px;
+  background:
+    radial-gradient(
+      circle at 75% 35%,
+      rgba(139, 92, 246, 0.18),
+      transparent 38%
+    ),
+    linear-gradient(135deg, #050508, #160b24 60%, #09070e);
+  color: #fff;
+}
+
+.crypto-hero__content {
+  max-width: 670px;
+  text-align: left;
+
+  h1 {
+    font-size: clamp(2.5rem, 5vw, 4.6rem);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -2px;
+    margin: 24px 0;
+
+    span {
+      color: #a78bfa;
+    }
+  }
+
+  p {
+    color: #b8b4c5;
+    font-size: 1.1rem;
+    line-height: 1.8;
+  }
+}
+
+.crypto-hero__badge {
+  display: inline-block;
+  padding: 9px 16px;
+  border: 1px solid rgba(167, 139, 250, 0.35);
+  border-radius: 30px;
+  background: rgba(139, 92, 246, 0.1);
+  color: #c4b5fd;
+  font-size: 0.85rem;
+}
+
+.crypto-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 32px;
+
+  a {
+    padding: 14px 24px;
+    border-radius: 10px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: 0.25s ease;
+
+    &:hover {
+      transform: translateY(-3px);
+    }
+  }
+}
+
+.crypto-hero__primary {
+  background: #7c3aed;
+  color: #fff;
+
+  &:hover {
+    background: #8b5cf6;
+    color: #fff;
+  }
+}
+
+.crypto-hero__secondary {
+  border: 1px solid #5b4778;
+  color: #fff;
+
+  &:hover {
+    border-color: #a78bfa;
+    color: #c4b5fd;
+  }
+}
+
+.crypto-hero__features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 22px;
+  margin-top: 45px;
+
+  div {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    color: #c4bfd0;
+    font-size: 0.85rem;
+
+    svg {
+      color: #a78bfa;
+    }
+  }
+}
+
+.crypto-hero__visual {
+  display: flex;
+  justify-content: center;
+}
+
+.crypto-hero__panel {
+  width: 100%;
+  max-width: 440px;
+  padding: 30px;
+  border-radius: 22px;
+  background: rgba(19, 17, 29, 0.96);
+  border: 1px solid rgba(167, 139, 250, 0.2);
+  box-shadow: 0 25px 90px rgba(87, 35, 151, 0.2);
+  text-align: left;
+}
+
+.crypto-hero__panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  color: #c4b5fd;
+  font-weight: 700;
+}
+
+.crypto-hero__demo {
+  font-size: 0.65rem;
+  color: #a1a1aa;
+}
+
+.crypto-hero__panel-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 30px 0 20px;
+  color: #fff;
+}
+
+.crypto-hero__coin {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 18px 0;
+  border-bottom: 1px solid #292638;
+
+  div {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  strong {
+    color: #fff;
+  }
+
+  small {
+    color: #a1a1aa;
+  }
+}
+
+.crypto-hero__symbol {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+.crypto-hero__symbol.bitcoin {
+  background: #f7931a;
+  color: #fff;
+}
+
+.crypto-hero__symbol.ethereum {
+  background: #627eea;
+  color: #fff;
+}
+
+.crypto-hero__symbol.litecoin {
+  background: #345d9d;
+  color: #fff;
+}
+
+.crypto-hero__tag {
+  color: #c4b5fd;
+  font-size: 0.8rem;
+  text-decoration: none;
+cursor: pointer;
+&:hover {
+  text-decoration: underline;
+}
+}
+
+.crypto-hero__disclaimer {
+  margin: 20px 0 0;
+  font-size: 0.75rem;
+  color: #a1a1aa;
+}
+
+@media (max-width: 900px) {
+  .crypto-hero {
+    grid-template-columns: 1fr;
+    padding: 130px 24px 70px;
+    gap: 50px;
+  }
+
+  .crypto-hero__content {
+    text-align: center;
+    margin: 0 auto;
+  }
+
+  .crypto-hero__actions,
+  .crypto-hero__features {
+    justify-content: center;
+  }
+
+  .crypto-hero__content h1 {
+    letter-spacing: -1px;
+  }
+}
+
+@media (max-width: 480px) {
+  .crypto-hero__panel {
+    padding: 20px;
+  }
+
+  .crypto-hero__actions a {
+    width: 100%;
+    text-align: center;
+  }
+}

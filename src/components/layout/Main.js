@@ -1,12 +1,26 @@
+
 import '../../styles/Container.scss';
 import React, { useState } from 'react';
 import { Card, Button, Modal, Row, Col } from 'react-bootstrap';
-import { FaRocket, FaMoneyBillWave, FaLock, FaUsers, FaWallet, FaCoins, FaShieldAlt, FaChartLine } from 'react-icons/fa'
+
+import {
+  FaRocket,
+  FaMoneyBillWave,
+  FaLock,
+  FaUsers,
+  FaWallet,
+  FaCoins,
+  FaShieldAlt,
+  FaChartLine,
+  FaBookOpen,
+  FaGraduationCap
+} from 'react-icons/fa';
 
 export default function Main() {
-    const bitCoin = '../../img/bitcoin.png';
-    const ether = '../../img/Ethereum.png';
-    const liteCoin = '../../img/litecoin.png';
+  const bitCoin = '../../img/bitcoin.png';
+  const ether = '../../img/Ethereum.png';
+  const liteCoin = '../../img/litecoin.png';
+
 
 
     // Estado para controlar a visibilidade dos modais
@@ -16,28 +30,6 @@ export default function Main() {
 
     return (
       <>
-        {/* sessão 1 */}
-        <section>
-          <div className='container-principal'>
-
-          <h1 className='titulo'>Bem vindo ao CriptoNexus</h1>
-          <h2 className="texto">
-            CryptoNexus a plataforma perfeita para quem deseja explorar o universo das criptomoedas sem riscos! Sabemos que começar a investir pode parecer complicado, mas estamos aqui para simplificar sua jornada. Ao criar sua conta, você receberá 1.000 Tether Coins para simular trocas, realizar investimentos e experimentar transações reais sem gastar um centavo. Nossa missão é ajudá-lo a entender como o mercado funciona, oferecendo um ambiente seguro e intuitivo para aprender e crescer. Não perca mais tempo! Crie agora mesmo sua conta na CryptoNexus e descubra como dominar o mercado de criptomoedas. 💰✨
-          </h2>
-
-          <div className='Position-btn'>
-          <a href='/Cadastro'>
-            <button className='btn-CriarConta'>Crie Sua conta!</button>
-          </a>
-          <a href='Login'>
-            <button className='btn-fazerLogin'>Faça Login</button>
-          </a>
-          <p className='ajuste'>Ou</p>
-          </div>
-
-          </div>
-        </section>
-
         {/* sessão 2 */}
         <section className="coins-info" id="crypto-info">
           <h2>Principais Criptomoedas</h2>
@@ -105,6 +97,9 @@ export default function Main() {
               </Card.Body>
             </Card>
           </div>
+          <a href="/Criptoativos" className="btn btn-primary mt-4">
+  Ver todos os criptoativos
+</a>
         </section>
 
         {/* Modal Bitcoin */}
@@ -319,63 +314,72 @@ export default function Main() {
           </section>
         </div>
 
-        <section className="testimonials">
-          <Row className="text-center">
-            <Col>
-              <h2>O que Nossos Usuários Dizem</h2>
+        
+        {/* Seção final - Aprenda, Explore e Evolua */}
+        <section className="crypto-learning" id="crypto-learning">
+          <div className="crypto-learning-header">
+            <span className="crypto-learning-label">
+              SUA JORNADA COMEÇA AQUI
+            </span>
 
-              <blockquote className="blockquote">
-                <p>
-                  "Investir em criptomoedas transformou minha vida financeira. A
-                  CryptoNexus tornou o processo fácil e seguro!"
-                </p>
-                <footer className="blockquote-footer">João S.</footer>
-              </blockquote>
+            <h2>Aprenda, Explore e Evolua</h2>
 
-              <blockquote className="blockquote">
-                <p>
-                  "Graças à CryptoNexus, consegui diversificar meus
-                  investimentos e aumentar meus lucros. As dicas são muito
-                  úteis!"
-                </p>
-                <footer className="blockquote-footer">Maria F.</footer>
-              </blockquote>
+            <p>
+              Descubra o universo das criptomoedas, desenvolva seus
+              conhecimentos e explore o mercado em um ambiente educativo.
+            </p>
+          </div>
 
-              <blockquote className="blockquote">
-                <p>
-                  "O simulador de investimentos é uma ferramenta incrível! Me
-                  ajudou a entender como funcionam as criptomoedas."{" "}
-                </p>
-                <footer className="blockquote-footer">Carlos T.</footer>
-              </blockquote>
+          <div className="crypto-learning-grid">
+            {/* Card 1 - Aprenda */}
+            <article className="crypto-learning-card">
+              <div className="crypto-learning-icon">
+                <FaBookOpen />
+              </div>
 
-              <blockquote className="blockquote">
-                <p>
-                  "Recomendo a CryptoNexus a todos que desejam entrar no mundo
-                  das criptomoedas. É fácil e seguro!"
-                </p>
-                <footer className="blockquote-footer">Ana L.</footer>
-              </blockquote>
+              <h3>Aprenda</h3>
 
-              <blockquote className="blockquote">
-                <p>
-                  "A equipe da CryptoNexus é muito atenciosa e sempre pronta
-                  para ajudar. Meus investimentos nunca estiveram tão seguros!"
-                </p>
-                <footer className="blockquote-footer">Ricardo P.</footer>
-              </blockquote>
+              <p>
+                Conheça os fundamentos das criptomoedas, a tecnologia
+                blockchain e os principais conceitos do mercado digital.
+              </p>
+            </article>
 
-              <blockquote className="blockquote">
-                <p>
-                  "Com as orientações da CryptoNexus, consegui dobrar meu
-                  investimento inicial em apenas seis meses. Estou muito
-                  satisfeito!"
-                </p>
-                <footer className="blockquote-footer">Fernanda G.</footer>
-              </blockquote>
-            </Col>
-          </Row>
+            {/* Card 2 - Explore */}
+            <article className="crypto-learning-card">
+              <div className="crypto-learning-icon">
+                <FaChartLine />
+              </div>
+
+              <h3>Explore</h3>
+
+              <p>
+                Entenda como o mercado funciona, acompanhe tendências
+                e conheça diferentes ativos digitais.
+              </p>
+            </article>
+
+            {/* Card 3 - Evolua */}
+            <article className="crypto-learning-card">
+              <div className="crypto-learning-icon">
+                <FaGraduationCap />
+              </div>
+
+              <h3>Evolua</h3>
+
+              <p>
+                Desenvolva seus conhecimentos financeiros e aprenda
+                sobre segurança, riscos e simulações de investimentos.
+              </p>
+            </article>
+          </div>
+
+          <p className="crypto-learning-disclaimer">
+            Conteúdo exclusivamente educativo. Não constitui
+            recomendação de investimento.
+          </p>
         </section>
       </>
     );
 }
+ 

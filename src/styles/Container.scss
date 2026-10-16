@@ -440,3 +440,626 @@
         padding: 1.5rem; /* Ajuste o padding do bloco de citação */
     }
 }
+
+/* ==========================================
+   CRYPTO NEXUS - CARDS PREMIUM
+   Principais Criptomoedas
+========================================== */
+
+.coins-info {
+    position: relative;
+    margin-top: 0;
+    padding: 100px 24px 120px;
+    background: linear-gradient(
+        180deg,
+        #09070e 0%,
+        #120a1e 55%,
+        #08070d 100%
+    );
+    text-align: center;
+
+    h2 {
+        font-family: "Nunito", sans-serif;
+        font-size: clamp(2rem, 4vw, 3rem);
+        font-weight: 800;
+        color: #ffffff;
+        margin: 0 0 20px;
+    }
+}
+
+.coins-info .cards-container {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 28px;
+    max-width: 1150px;
+    margin: 45px auto 0;
+}
+
+/* Cartões individuais */
+.coins-info .cards-container .card {
+    width: 100% !important;
+    min-width: 0;
+    margin: 0;
+    padding: 32px 24px;
+    background: #15111f;
+    border: 1px solid rgba(167, 139, 250, 0.2);
+    border-radius: 20px;
+    color: #ffffff;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+    animation: none;
+
+    &:hover {
+        transform: translateY(-8px);
+        border-color: #8b5cf6;
+        box-shadow: 0 18px 50px rgba(124, 58, 237, 0.2);
+    }
+}
+
+/* Imagens das moedas */
+.coins-info .coin-img {
+    display: block;
+    width: 80px !important;
+    height: 80px !important;
+    object-fit: contain;
+    margin: 5px auto 25px;
+    animation: float 4s ease-in-out infinite;
+}
+
+/* Textos */
+.coins-info .card-body {
+    padding: 10px 0;
+}
+
+.coins-info .card-title {
+    color: #ffffff;
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin-bottom: 15px;
+}
+
+.coins-info .card-text {
+    color: #b8b4c5;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    min-height: 75px;
+}
+
+/* Botões Saiba Mais */
+.coins-info .btn-infosCrypto {
+    width: 100%;
+    min-height: 46px;
+    padding: 12px 16px;
+    background: #7c3aed;
+    border: 1px solid #7c3aed;
+    border-radius: 10px;
+    color: #ffffff;
+    font-weight: 700;
+    transition: 0.25s ease;
+
+    &:hover,
+    &:focus {
+        background: #8b5cf6;
+        border-color: #8b5cf6;
+        color: #ffffff;
+        opacity: 1 !important;
+        box-shadow: 0 6px 24px rgba(139, 92, 246, 0.3);
+    }
+}
+
+/* Responsividade */
+@media (max-width: 900px) {
+    .coins-info .cards-container {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 600px) {
+    .coins-info {
+        padding: 75px 18px;
+    }
+
+    .coins-info .cards-container {
+        grid-template-columns: 1fr;
+        max-width: 420px;
+    }
+
+    .coins-info .card-text {
+        min-height: auto;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .coins-info .card,
+    .coins-info .coin-img {
+        animation: none;
+        transition: none;
+    }
+}
+
+/* ==========================================
+   CRYPTO NEXUS - VANTAGENS PREMIUM
+========================================== */
+
+.crypto-advantages {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 100px 32px;
+    background: linear-gradient(
+        180deg,
+        #08070d 0%,
+        #140b24 50%,
+        #09070e 100%
+    );
+    color: #ffffff;
+    text-align: center;
+    overflow: hidden;
+
+    h2 {
+        color: #ffffff;
+        font-size: clamp(2rem, 4vw, 3rem);
+        font-weight: 800;
+        margin-bottom: 55px !important;
+    }
+
+    .row {
+        max-width: 1250px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* Cartões */
+    .card {
+        width: 100%;
+        height: 100%;
+        min-height: 260px;
+        margin: 0;
+        padding: 25px 15px;
+        background: #15111f;
+        border: 1px solid rgba(167, 139, 250, 0.2);
+        border-radius: 20px;
+        color: #ffffff;
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+        animation: none;
+        transition:
+            transform 0.3s ease,
+            border-color 0.3s ease,
+            box-shadow 0.3s ease;
+
+        &:hover {
+            transform: translateY(-8px);
+            border-color: #8b5cf6;
+            box-shadow: 0 18px 45px rgba(124, 58, 237, 0.2);
+        }
+    }
+
+    /* Ícones */
+    .card svg {
+        color: #a78bfa;
+        filter: drop-shadow(0 0 12px rgba(139, 92, 246, 0.3));
+    }
+
+    /* Títulos */
+    .card-title {
+        color: #ffffff;
+        font-size: 1.15rem;
+        font-weight: 700;
+        line-height: 1.5;
+        margin-bottom: 15px;
+    }
+
+    /* Descrições */
+    .card-text {
+        color: #b8b4c5;
+        font-size: 0.95rem;
+        line-height: 1.7;
+    }
+}
+
+/* Ajustes para tablets */
+@media (max-width: 991px) {
+    .crypto-advantages {
+        padding: 80px 24px;
+
+        .card {
+            min-height: 230px;
+        }
+    }
+}
+
+/* Ajustes para celulares */
+@media (max-width: 576px) {
+    .crypto-advantages {
+        padding: 65px 18px;
+
+        h2 {
+            margin-bottom: 35px !important;
+        }
+
+        .card {
+            min-height: auto;
+            padding: 25px 18px;
+        }
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .crypto-advantages .card {
+        transition: none;
+    }
+}
+
+/* ==========================================
+   CRYPTO NEXUS - COMO COMEÇAR PREMIUM
+========================================== */
+
+.start-now-crypto {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 100px 32px;
+    background: linear-gradient(
+        180deg,
+        #09070e 0%,
+        #140b24 50%,
+        #08070d 100%
+    );
+    color: #ffffff;
+    text-align: center;
+    overflow: hidden;
+
+    h2 {
+        color: #ffffff;
+        font-size: clamp(2rem, 4vw, 3rem);
+        font-weight: 800;
+        margin-bottom: 45px;
+    }
+
+    .row {
+        max-width: 1250px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .card {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        min-height: 280px;
+        margin: 0;
+        padding: 35px 18px 25px;
+        background: #15111f;
+        border: 1px solid rgba(167, 139, 250, 0.2);
+        border-radius: 20px;
+        color: #ffffff;
+        overflow: hidden;
+        animation: none;
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+
+        transition:
+            transform 0.3s ease,
+            border-color 0.3s ease,
+            box-shadow 0.3s ease;
+
+        &:hover {
+            transform: translateY(-8px);
+            border-color: #8b5cf6;
+            box-shadow: 0 18px 45px rgba(124, 58, 237, 0.2);
+        }
+
+        &::before {
+            position: absolute;
+            top: 12px;
+            right: 18px;
+            color: rgba(167, 139, 250, 0.18);
+            font-size: 2.3rem;
+            font-weight: 800;
+            line-height: 1;
+        }
+    }
+
+    /* Numeração dos quatro cartões */
+    .row > div:nth-child(1) .card::before {
+        content: "01";
+    }
+
+    .row > div:nth-child(2) .card::before {
+        content: "02";
+    }
+
+    .row > div:nth-child(3) .card::before {
+        content: "03";
+    }
+
+    .row > div:nth-child(4) .card::before {
+        content: "04";
+    }
+
+    .card svg {
+        color: #a78bfa;
+        margin-bottom: 18px;
+        filter: drop-shadow(
+            0 0 12px rgba(139, 92, 246, 0.3)
+        );
+    }
+
+    .card-title {
+        color: #ffffff;
+        font-size: 1.1rem;
+        font-weight: 700;
+        line-height: 1.5;
+        margin-bottom: 15px;
+    }
+
+    .card-text {
+        color: #b8b4c5;
+        font-size: 0.95rem;
+        line-height: 1.7;
+    }
+}
+
+/* Responsividade */
+@media (max-width: 991px) {
+    .start-now-crypto {
+        padding: 80px 24px;
+
+        .card {
+            min-height: 250px;
+        }
+    }
+}
+
+@media (max-width: 576px) {
+    .start-now-crypto {
+        padding: 65px 18px;
+
+        h2 {
+            margin-bottom: 30px;
+        }
+
+        .card {
+            min-height: auto;
+            padding: 35px 20px;
+        }
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .start-now-crypto .card {
+        transition: none;
+    }
+}
+/* Correção da legibilidade dos cartões */
+
+.start-now-crypto .card .card-title {
+    color: #ffffff !important;
+    font-weight: 700;
+}
+
+.start-now-crypto .card .card-text {
+    color: #b8b4c5 !important;
+}
+
+.start-now-crypto .card .card-body {
+    color: #ffffff;
+}
+
+/* ==========================================
+   CRYPTO NEXUS - DICAS PARA INICIANTES
+========================================== */
+
+.container-fluid:has(> .investment-tips-section) {
+    background: #09070e;
+    padding: 0;
+    margin: 0;
+}
+
+.investment-tips-section {
+    width: 100%;
+    min-height: auto;
+    margin: 0;
+    padding: 100px 24px;
+    background: linear-gradient(
+        180deg,
+        #08070d 0%,
+        #140b24 50%,
+        #09070e 100%
+    );
+    color: #ffffff;
+    text-align: center;
+    overflow: hidden;
+
+    .investment-tips-title {
+        color: #ffffff;
+        font-size: clamp(2rem, 4vw, 3rem);
+        font-weight: 800;
+        margin-bottom: 50px;
+    }
+
+    .investment-tips-list {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 20px;
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0;
+        list-style: none;
+        text-align: left;
+    }
+
+    .investment-tip-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 14px;
+        width: 100%;
+        margin: 0;
+        padding: 24px;
+        background: #15111f;
+        border: 1px solid rgba(167, 139, 250, 0.2);
+        border-radius: 16px;
+        color: #d1cbdc;
+        font-size: 0.95rem;
+        line-height: 1.7;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        transition:
+            transform 0.3s ease,
+            border-color 0.3s ease;
+
+        &:hover {
+            transform: translateY(-5px);
+            border-color: #8b5cf6;
+        }
+
+        i {
+            flex-shrink: 0;
+            color: #a78bfa;
+            font-size: 1.3rem;
+            margin-top: 2px;
+        }
+    }
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .investment-tips-section {
+        padding: 70px 18px;
+
+        .investment-tips-list {
+            grid-template-columns: 1fr;
+        }
+
+        .investment-tip-item {
+            padding: 20px;
+        }
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .investment-tips-section .investment-tip-item {
+        transition: none;
+    }
+}
+
+/* ==========================================
+   CRYPTO NEXUS - APRENDA, EXPLORE E EVOLUA
+========================================== */
+
+.crypto-learning {
+  width: 100%;
+  padding: 100px 24px;
+  background: linear-gradient(180deg, #09070e, #170b2b, #09070e);
+  color: #ffffff;
+  text-align: center;
+}
+
+.crypto-learning-header {
+  max-width: 780px;
+  margin: 0 auto 50px;
+
+  .crypto-learning-label {
+    display: inline-block;
+    margin-bottom: 16px;
+    color: #a78bfa;
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+  }
+
+  h2 {
+    color: #ffffff;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 800;
+    margin-bottom: 20px;
+  }
+
+  p {
+    color: #b8b4c5;
+    line-height: 1.8;
+  }
+}
+
+.crypto-learning-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 26px;
+  max-width: 1150px;
+  margin: 0 auto;
+}
+
+.crypto-learning-card {
+  padding: 40px 28px;
+  background: #15111f;
+  border: 1px solid rgba(167, 139, 250, 0.2);
+  border-radius: 20px;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+
+  &:hover {
+    transform: translateY(-8px);
+    border-color: #8b5cf6;
+  }
+
+  h3 {
+    color: #ffffff;
+    font-size: 1.4rem;
+    font-weight: 800;
+    margin: 22px 0 15px;
+  }
+
+  p {
+    color: #b8b4c5;
+    font-size: 0.95rem;
+    line-height: 1.8;
+  }
+}
+
+.crypto-learning-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 72px;
+  height: 72px;
+  margin: 0 auto;
+  background: rgba(139, 92, 246, 0.12);
+  border: 1px solid rgba(167, 139, 250, 0.25);
+  border-radius: 18px;
+
+  svg {
+    color: #a78bfa;
+    font-size: 2rem;
+  }
+}
+
+.crypto-learning-disclaimer {
+  margin: 45px auto 0;
+  color: #a39ab3;
+  font-size: 0.85rem;
+}
+
+/* Responsividade */
+@media (max-width: 900px) {
+  .crypto-learning-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .crypto-learning {
+    padding: 70px 18px;
+  }
+
+  .crypto-learning-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .crypto-learning-card {
+    transition: none;
+  }
+}

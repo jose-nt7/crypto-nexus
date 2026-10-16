@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
 
 * {
     margin: 0;
@@ -10,10 +10,20 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    background: #2C003E !important;
+
+    background: linear-gradient(
+        135deg,
+        #050508 0%,
+        #10091c 30%,
+        #26103e 65%,
+        #08080d 100%
+    ) !important;
+
+    background-attachment: fixed !important;
+
     font-family: "Nunito", system-ui;
     overflow-x: hidden;
-    color: #FFF;
+    color: #fff;
 }
 
 .App {
@@ -21,4 +31,3 @@ body {
     text-align: center;
     align-items: center;
 }
-

@@ -1,47 +1,64 @@
+
 .navbar-custom {
-    background-color: transparent !important; 
-  }
-
-  .container-nav {
     background-color: transparent !important;
-  }
-  
-  .navbar-custom .nav-link {
-    color: #000 !important; // Cor dos links
-    font-weight: 800; // Peso intermediário (deixa os nomes mais destacados)
-    text-transform: capitalize; // Opcional: Faz a primeira letra de cada palavra ficar maiúscula
-    &:hover {
-      color: #4a0f72 !important; // Cor ao passar o mouse
-      font-weight: bold; // Deixa mais evidente no hover
+}
+
+.container-nav {
+    background-color: transparent !important;
+}
+
+/* Links do menu superior */
+.navbar-custom .nav-link {
+    color: #ffffff !important;
+    font-weight: 800;
+    text-transform: capitalize;
+
+    &:hover,
+    &:focus {
+        color: #c084fc !important;
+        font-weight: bold;
     }
-  }
-  
-  .navbar-custom .navbar-brand {
+}
+
+/* Nome CryptoNexus */
+.navbar-custom .navbar-brand {
     margin-left: 1%;
-    color: #000 !important;
-    font-weight: bold; // Marca o nome da marca com um peso maior
+    color: #ffffff !important;
+    font-weight: bold;
+
     &:hover {
-      color: #4a0f72 !important;
+        color: #c084fc !important;
     }
-  }
-  
-  
+}
 
+/* Menu suspenso de Criptoativos */
+.navbar-custom .dropdown-menu {
+    background-color: #14101f;
+    border: 1px solid #4a246b;
+}
 
+.navbar-custom .dropdown-item {
+    color: #ffffff !important;
 
-/* Estilos para o botão toggle */
+    &:hover,
+    &:focus {
+        background-color: #321451;
+        color: #ffffff !important;
+    }
+}
+
+/* Botão do menu em dispositivos móveis */
 .menu-toogle {
     padding: 3px 5px;
-    background-color: #fff;  /* Remover o fundo padrão */
-    border: 2px solid #fff;  /* Remover a borda padrão */
-    outline: none;  /* Remover o contorno ao focar */
+    background-color: #ffffff;
+    border: 2px solid #ffffff;
+    outline: none;
 }
 
-
-/* Remover ou ajustar o outline quando o toggle é focado */
 .menu-toogle:focus {
     outline: none;
-    box-shadow: none; 
+    box-shadow: none;
 }
+
 
 

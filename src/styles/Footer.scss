@@ -1,35 +1,125 @@
+
+/* ==========================================
+   CRYPTO NEXUS - FOOTER PREMIUM
+========================================== */
+
 .footer {
-    background: #fff;
-    color: #000;            /* Cor do texto */
-    text-align: center;      /* Centraliza o texto */
-    padding: 20px;          /* Espaçamento interno */
-    position: relative;    /* Permite que o footer fique fixo, se desejado */
-    margin-top: -30px;
+  width: 100%;
+  padding: 75px 24px 25px;
+  background: #08070d;
+  border-top: 1px solid rgba(167, 139, 250, 0.15);
+  color: #ffffff;
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 70px;
+  max-width: 1150px;
+  margin: 0 auto;
+  padding-bottom: 55px;
+}
+
+.footer-brand {
+  max-width: 430px;
 }
 
 .footer-title {
-    margin: 0;                   /* Remove margem padrão */
-    font-size: 24px;             /* Tamanho da fonte do título */
+  color: #ffffff;
+  font-size: 1.8rem;
+  font-weight: 800;
+  margin-bottom: 20px;
+
+  span {
+    color: #a78bfa;
+  }
+}
+
+.footer-description {
+  color: #b8b4c5;
+  font-size: 0.95rem;
+  line-height: 1.8;
 }
 
 .footer-contact {
-    margin: 10px 0;             /* Espaçamento acima e abaixo */
+  h3 {
+    color: #ffffff;
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 25px;
+  }
 }
 
-.footer-email {
-    color: #000;                /* Cor do email */
-    text-decoration: none;       /* Remove o sublinhado */
+.footer-contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  margin-bottom: 20px;
+  color: #b8b4c5;
+  font-size: 0.9rem;
+
+  svg {
+    flex-shrink: 0;
+    margin-top: 4px;
+    color: #a78bfa;
+  }
+
+  a {
+    color: #b8b4c5;
+    text-decoration: none;
+    overflow-wrap: anywhere;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: #c4b5fd;
+    }
+  }
 }
 
-.footer-email:hover {
-    text-decoration: underline;  /* Sublinha ao passar o mouse */
+.footer-phone-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
-.footer-phone {
-    font-weight: normal;         /* Peso normal para os números */
+.footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  max-width: 1150px;
+  margin: 0 auto;
+  padding-top: 25px;
+  border-top: 1px solid rgba(167, 139, 250, 0.15);
+
+  p {
+    margin: 0;
+    color: #938ba3;
+    font-size: 0.8rem;
+  }
 }
 
-.footer-rights {
-    background-color: #fff;
-    font-size: 14px;             /* Tamanho da fonte do texto de direitos autorais */
+/* Tablets e celulares */
+@media (max-width: 768px) {
+  .footer {
+    padding: 55px 20px 25px;
+  }
+
+  .footer-content {
+    grid-template-columns: 1fr;
+    gap: 35px;
+    padding-bottom: 35px;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .footer-contact-item a {
+    transition: none;
+  }
 }
