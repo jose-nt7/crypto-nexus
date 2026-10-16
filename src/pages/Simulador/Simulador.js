@@ -126,8 +126,11 @@ export default function Simulador() {
           </h1>
 
           <p>
-            Simule investimentos fictícios utilizando
-            cotações de criptomoedas fornecidas pela CoinGecko.
+        Simule investimentos em criptomoedas utilizando
+  cotações reais de mercado fornecidas pela API CoinGecko,
+  com atualização automática a cada 60 segundos.
+  Explore diferentes cenários de valorização e
+  desvalorização sem utilizar dinheiro real.
           </p>
         </header>
 

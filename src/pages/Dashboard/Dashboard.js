@@ -239,11 +239,23 @@ const dadosGrafico = ativos
               </span>
             </div>
 
+            
             <div className="dashboard-market-list">
               {MOEDAS.map((moeda) => {
                 const cotacao = cotacoes.find(
                   (item) => item.id === moeda.id
                 );
+
+                const precoValido =
+                  cotacao &&
+                  Number.isFinite(cotacao.preco) &&
+                  cotacao.preco > 0;
+
+                const variacao = cotacao?.variacao24h;
+
+                const variacaoDisponivel =
+                  typeof variacao === "number" &&
+                  Number.isFinite(variacao);
 
                 return (
                   <div
@@ -255,19 +267,39 @@ const dadosGrafico = ativos
                       <small>{moeda.simbolo}</small>
                     </div>
 
-                    <span>
-                      {cotacao &&
-                      Number.isFinite(cotacao.preco) &&
-                      cotacao.preco > 0
-                        ? formatarBRL(cotacao.preco)
-                        : "Indisponível"}
-                    </span>
+                    <div className="dashboard-market-values">
+                      <strong>
+                        {precoValido
+                          ? formatarBRL(cotacao.preco)
+                          : "Indisponível"}
+                      </strong>
+
+                      {variacaoDisponivel ? (
+                        <span
+                          className={
+                            variacao > 0
+                              ? "dashboard-variation positive"
+                              : variacao < 0
+                              ? "dashboard-variation negative"
+                              : "dashboard-variation neutral"
+                          }
+                        >
+                          {variacao > 0 ? "+" : ""}
+                          {variacao.toFixed(2)}% (24h)
+                        </span>
+                      ) : (
+                        <small>
+                          Variação indisponível
+                        </small>
+                      )}
+                    </div>
                   </div>
                 );
               })}
             </div>
           </section>
 
+          {/* MINHA CARTEIRA VIRTUAL */}
           <section className="dashboard-panel">
             <div className="dashboard-section-header">
               <h2>Minha carteira virtual</h2>
@@ -310,7 +342,6 @@ const dadosGrafico = ativos
           </section>
         </div>
 
-        
         {/* GRÁFICO DE DISTRIBUIÇÃO DA CARTEIRA */}
         <section className="dashboard-panel dashboard-chart-section">
           <div className="dashboard-section-header">
@@ -434,4 +465,5 @@ const dadosGrafico = ativos
     </main>
   );
 }
+
 

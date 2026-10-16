@@ -182,20 +182,26 @@ export async function buscarDetalhesCripto(moedaId, signal) {
  * Busca cotações reais em BRL para o simulador educativo.
  * Não altera as funções existentes do Crypto Nexus.
  */
+/**
+ *
+ * Retorna preços, variação percentual em 24 horas
+ * e data da última atualização.
+ */
 export async function buscarCotacoesSimulador(signal) {
   const parametros = new URLSearchParams({
-    vs_currency: 'brl',
-    ids: MOEDAS.join(','),
-    order: 'market_cap_desc',
-    per_page: '6',
-    page: '1',
-    sparkline: 'false'
+    vs_currency: "brl",
+    ids: MOEDAS.join(","),
+    order: "market_cap_desc",
+    per_page: "6",
+    page: "1",
+    sparkline: "false",
+    price_change_percentage: "24h"
   });
 
   const resposta = await fetch(`${API_URL}?${parametros}`, {
-    method: 'GET',
+    method: "GET",
     headers: {
-      Accept: 'application/json'
+      Accept: "application/json"
     },
     signal
   });
@@ -209,7 +215,7 @@ export async function buscarCotacoesSimulador(signal) {
   const dados = await resposta.json();
 
   if (!Array.isArray(dados) || dados.length === 0) {
-    throw new Error('Nenhuma cotação disponível no momento.');
+    throw new Error("Nenhuma cotação disponível no momento.");
   }
 
   return dados
@@ -223,7 +229,19 @@ export async function buscarCotacoesSimulador(signal) {
       id: moeda.id,
       nome: moeda.name,
       simbolo: moeda.symbol.toUpperCase(),
+
+      // Cotação atual em reais
       preco: moeda.current_price,
+
+      // Variação percentual nas últimas 24 horas
+      variacao24h: Number.isFinite(
+        moeda.price_change_percentage_24h
+      )
+        ? moeda.price_change_percentage_24h
+        : null,
+
+      // Data da última atualização da cotação
       atualizadoEm: moeda.last_updated
     }));
 }
+

@@ -460,3 +460,74 @@
     }
   }
 }
+
+/* ==========================================
+   DASHBOARD - VARIAÇÃO DE PREÇOS EM 24H
+   ========================================== */
+
+.dashboard-market-values {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+  min-width: 0;
+  text-align: right;
+
+  strong {
+    font-size: 15px;
+    font-weight: 700;
+    color: #ffffff;
+    overflow-wrap: anywhere;
+  }
+
+  small {
+    font-size: 12px;
+    color: #a1a1aa;
+  }
+}
+
+.dashboard-variation {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 6px 12px;
+  border-radius: 8px;
+
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+
+  transition: background 0.2s ease;
+
+  &.positive {
+    color: #34d399;
+    background: rgba(52, 211, 153, 0.12);
+    border: 1px solid rgba(52, 211, 153, 0.2);
+  }
+
+  &.negative {
+    color: #fb7185;
+    background: rgba(251, 113, 133, 0.12);
+    border: 1px solid rgba(251, 113, 133, 0.2);
+  }
+
+  &.neutral {
+    color: #a1a1aa;
+    background: rgba(161, 161, 170, 0.12);
+    border: 1px solid rgba(161, 161, 170, 0.2);
+  }
+}
+
+@media (max-width: 600px) {
+  .dashboard-market-values {
+    strong {
+      font-size: 13px;
+    }
+  }
+
+  .dashboard-variation {
+    font-size: 11px;
+    padding: 5px 8px;
+  }
+}
