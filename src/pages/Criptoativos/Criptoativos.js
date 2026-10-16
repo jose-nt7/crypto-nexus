@@ -3,6 +3,7 @@ import React, { useMemo, useState } from 'react';
 import NavBar from '../../components/layout/NavBar';
 import Footer from '../../components/layout/Footer';
 import './Criptoativos.scss';
+import GraficoCripto from './GraficoCripto';
 
 // Valores fictícios para demonstração.
 // Não representam cotações reais.
@@ -184,6 +185,7 @@ export default function Criptoativos() {
               )}
             </div>
           </section>
+          <GraficoCripto />
         </div>
       </main>
 
