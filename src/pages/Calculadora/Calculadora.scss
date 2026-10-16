@@ -1,0 +1,432 @@
+
+/* =========================================
+   CRYPTO NEXUS - CALCULADORA DE TAXAS
+   ========================================= */
+
+.calculadora-page {
+  min-height: 100vh;
+  padding: 110px 24px 80px;
+
+  background:
+    radial-gradient(
+      circle at 75% 15%,
+      rgba(124, 58, 237, 0.18),
+      transparent 40%
+    ),
+    #0b0611;
+
+  color: #ffffff;
+}
+
+.calculadora-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* =========================================
+   CABEÇALHO
+   ========================================= */
+
+.calculadora-header {
+  text-align: center;
+  margin-bottom: 45px;
+
+  .calculadora-tag {
+    display: inline-block;
+    padding: 8px 16px;
+    margin-bottom: 18px;
+
+    border: 1px solid rgba(168, 85, 247, 0.4);
+    border-radius: 30px;
+
+    color: #c4b5fd;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
+  }
+
+  h1 {
+    margin-bottom: 16px;
+
+    font-size: clamp(32px, 5vw, 52px);
+    font-weight: 800;
+    line-height: 1.2;
+
+    span {
+      color: #a78bfa;
+    }
+  }
+
+  p {
+    max-width: 680px;
+    margin: 0 auto;
+
+    color: #a1a1aa;
+    font-size: 15px;
+    line-height: 1.7;
+  }
+}
+
+/* =========================================
+   LAYOUT PRINCIPAL
+   ========================================= */
+
+.calculadora-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px;
+  align-items: start;
+}
+
+.calculadora-card {
+  min-width: 0;
+  padding: 32px;
+
+  background: #151020;
+  border: 1px solid rgba(168, 85, 247, 0.22);
+  border-radius: 18px;
+
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.15);
+
+  h2 {
+    margin-bottom: 28px;
+
+    color: #ffffff;
+    font-size: 22px;
+    font-weight: 700;
+  }
+}
+
+/* =========================================
+   CAMPOS DO FORMULÁRIO
+   ========================================= */
+
+.calculadora-field {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 24px;
+
+  label {
+    color: #d4d4d8;
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  select,
+  input {
+    width: 100%;
+    min-height: 50px;
+    padding: 13px 15px;
+
+    background: #0c0814;
+    border: 1px solid #39264e;
+    border-radius: 10px;
+
+    color: #ffffff;
+    font-family: inherit;
+    font-size: 15px;
+
+    outline: none;
+
+    transition:
+      border-color 0.2s ease,
+      box-shadow 0.2s ease;
+
+    &:hover {
+      border-color: #68438e;
+    }
+
+    &:focus {
+      border-color: #a78bfa;
+      box-shadow: 0 0 0 3px rgba(167, 139, 250, 0.12);
+    }
+
+    &::placeholder {
+      color: #71717a;
+    }
+  }
+
+  select {
+    cursor: pointer;
+
+    option {
+      background: #151020;
+      color: #ffffff;
+    }
+  }
+
+  input[type="number"] {
+    appearance: textfield;
+    -moz-appearance: textfield;
+
+    &::-webkit-inner-spin-button,
+    &::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+  }
+}
+
+/* =========================================
+   INFORMAÇÕES DA OPERAÇÃO
+   ========================================= */
+
+.calculadora-info {
+  padding: 20px;
+  margin-top: 10px;
+
+  background: rgba(124, 58, 237, 0.1);
+  border: 1px solid rgba(168, 85, 247, 0.2);
+  border-radius: 12px;
+
+  strong {
+    display: block;
+    margin-bottom: 10px;
+
+    color: #c4b5fd;
+    font-size: 15px;
+  }
+
+  p {
+    margin: 0;
+
+    color: #a1a1aa;
+    font-size: 13px;
+    line-height: 1.7;
+  }
+}
+
+/* =========================================
+   RESULTADOS DA SIMULAÇÃO
+   ========================================= */
+
+.calculadora-results {
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+
+    background: linear-gradient(
+      90deg,
+      #7c3aed,
+      #a78bfa,
+      #9333ea
+    );
+  }
+}
+
+.calculadora-result-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+
+  padding: 18px 0;
+  border-bottom: 1px solid #30263b;
+
+  span {
+    color: #a1a1aa;
+    font-size: 14px;
+  }
+
+  strong {
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 700;
+    text-align: right;
+    overflow-wrap: anywhere;
+  }
+}
+
+/* Valor total das taxas */
+
+.calculadora-fee {
+  color: #fb7185 !important;
+}
+
+/* Resultado principal */
+
+.calculadora-highlight {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  margin-top: 28px;
+  padding: 25px;
+
+  background: linear-gradient(
+    135deg,
+    rgba(124, 58, 237, 0.2),
+    rgba(147, 51, 234, 0.08)
+  );
+
+  border: 1px solid rgba(168, 85, 247, 0.35);
+  border-radius: 14px;
+
+  span {
+    color: #c4b5fd;
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  strong {
+    color: #ffffff;
+    font-size: clamp(26px, 4vw, 38px);
+    font-weight: 800;
+    overflow-wrap: anywhere;
+  }
+}
+
+/* =========================================
+   MENSAGENS E AVISOS
+   ========================================= */
+
+.calculadora-warning {
+  margin-top: 20px;
+  padding: 14px 16px;
+
+  background: rgba(251, 113, 133, 0.08);
+  border: 1px solid rgba(251, 113, 133, 0.3);
+  border-radius: 10px;
+
+  color: #fb7185;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.calculadora-empty {
+  padding: 20px;
+
+  background: rgba(124, 58, 237, 0.08);
+  border: 1px solid rgba(168, 85, 247, 0.2);
+  border-radius: 12px;
+
+  color: #c4b5fd;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.calculadora-disclaimer {
+  margin-top: 30px;
+  padding-top: 20px;
+
+  border-top: 1px solid #30263b;
+
+  color: #a1a1aa;
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+/* =========================================
+   ANIMAÇÕES
+   ========================================= */
+
+@keyframes calculadora-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.calculadora-header,
+.calculadora-card {
+  animation: calculadora-fade-in 0.5s ease both;
+}
+
+.calculadora-results {
+  animation-delay: 0.1s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .calculadora-header,
+  .calculadora-card {
+    animation: none;
+  }
+
+  .calculadora-field input,
+  .calculadora-field select {
+    transition: none;
+  }
+}
+
+/* =========================================
+   RESPONSIVIDADE - TABLETS
+   ========================================= */
+
+@media (max-width: 900px) {
+  .calculadora-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .calculadora-container {
+    max-width: 700px;
+  }
+
+  .calculadora-card {
+    padding: 28px;
+  }
+}
+
+/* =========================================
+   RESPONSIVIDADE - CELULARES
+   ========================================= */
+
+@media (max-width: 600px) {
+  .calculadora-page {
+    padding: 95px 16px 50px;
+  }
+
+  .calculadora-header {
+    margin-bottom: 30px;
+
+    p {
+      font-size: 14px;
+    }
+  }
+
+  .calculadora-card {
+    padding: 22px;
+    border-radius: 14px;
+
+    h2 {
+      font-size: 19px;
+      margin-bottom: 22px;
+    }
+  }
+
+  .calculadora-field {
+    margin-bottom: 20px;
+  }
+
+  .calculadora-result-row {
+    align-items: flex-start;
+    gap: 12px;
+
+    span,
+    strong {
+      font-size: 13px;
+    }
+  }
+
+  .calculadora-highlight {
+    padding: 20px;
+
+    strong {
+      font-size: 27px;
+    }
+  }
+}

@@ -11,6 +11,8 @@ import Criptoativos from './pages/Criptoativos/Criptoativos';
 import DetalhesCripto from './pages/Criptoativos/DetalhesCripto';
 import Simulador from "./pages/Simulador/Simulador";
 import Carteira from "./pages/Carteira/Carteira";
+import Calculadora from "./pages/Calculadora/Calculadora";
+
 
 import {
   BrowserRouter as Router,
@@ -31,6 +33,8 @@ function App() {
           <Route path="/Criptoativos/:id" element={<DetalhesCripto />} />
           <Route path="/Simulador" element={<Simulador />} />
           <Route path="/Portfolio" element={<Carteira />} />
+          <Route path="/Calculadora" element={<Calculadora />} />
+
 
         </Routes>
       </div>
