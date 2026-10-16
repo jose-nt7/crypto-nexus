@@ -177,3 +177,53 @@ export async function buscarDetalhesCripto(moedaId, signal) {
     atualizadoEm: dados.market_data?.last_updated
   };
 }
+
+/**
+ * Busca cotações reais em BRL para o simulador educativo.
+ * Não altera as funções existentes do Crypto Nexus.
+ */
+export async function buscarCotacoesSimulador(signal) {
+  const parametros = new URLSearchParams({
+    vs_currency: 'brl',
+    ids: MOEDAS.join(','),
+    order: 'market_cap_desc',
+    per_page: '6',
+    page: '1',
+    sparkline: 'false'
+  });
+
+  const resposta = await fetch(`${API_URL}?${parametros}`, {
+    method: 'GET',
+    headers: {
+      Accept: 'application/json'
+    },
+    signal
+  });
+
+  if (!resposta.ok) {
+    throw new Error(
+      `Não foi possível consultar as cotações: HTTP ${resposta.status}`
+    );
+  }
+
+  const dados = await resposta.json();
+
+  if (!Array.isArray(dados) || dados.length === 0) {
+    throw new Error('Nenhuma cotação disponível no momento.');
+  }
+
+  return dados
+    .filter(
+      (moeda) =>
+        MOEDAS.includes(moeda.id) &&
+        Number.isFinite(moeda.current_price) &&
+        moeda.current_price > 0
+    )
+    .map((moeda) => ({
+      id: moeda.id,
+      nome: moeda.name,
+      simbolo: moeda.symbol.toUpperCase(),
+      preco: moeda.current_price,
+      atualizadoEm: moeda.last_updated
+    }));
+}

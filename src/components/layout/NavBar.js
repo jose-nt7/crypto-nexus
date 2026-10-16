@@ -20,7 +20,7 @@ export default function NavBar() {
                 <Nav.Link href="/">Home</Nav.Link>
                 <Nav.Link href="/Planos">Nossos Planos</Nav.Link>
                 <NavDropdown title="Criptoativos" id="navbarScrollingDropdown">
-                    <NavDropdown.Item href="/Produtos">Moedas & Tokens</NavDropdown.Item>
+                    <NavDropdown.Item href="/Criptoativos"> Moedas & Tokens</NavDropdown.Item>
                     <NavDropdown.Item href="/Portfolio">Carteira de Criptomoedas</NavDropdown.Item>
                     <NavDropdown.Divider />
                     <NavDropdown.Item href="/Investimentos">
