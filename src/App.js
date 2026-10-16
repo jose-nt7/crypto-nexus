@@ -12,6 +12,7 @@ import DetalhesCripto from './pages/Criptoativos/DetalhesCripto';
 import Simulador from "./pages/Simulador/Simulador";
 import Carteira from "./pages/Carteira/Carteira";
 import Calculadora from "./pages/Calculadora/Calculadora";
+import Dashboard from "./pages/Dashboard/Dashboard";
 
 
 import {
@@ -34,6 +35,7 @@ function App() {
           <Route path="/Simulador" element={<Simulador />} />
           <Route path="/Portfolio" element={<Carteira />} />
           <Route path="/Calculadora" element={<Calculadora />} />
+          <Route path="/Dashboard" element={<Dashboard />} />
 
 
         </Routes>
