@@ -1,3 +1,4 @@
+import Planos from './pages/Planos/Planos';
 import React from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.css';
@@ -14,6 +15,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/Cadastro" element={<Cadastro />} />
           <Route path="/Login" element={<Login />} />
+          <Route path="/Planos" element={<Planos />} />
         </Routes>
       </div>
     </Router>
