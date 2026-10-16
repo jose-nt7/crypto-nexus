@@ -1,0 +1,234 @@
+
+.criptoativos-page {
+  min-height: 75vh;
+  padding: 110px 24px;
+  background: linear-gradient(
+    135deg,
+    #050508 0%,
+    #10091c 45%,
+    #26103e 100%
+  );
+  color: #ffffff;
+}
+
+.criptoativos-container {
+  max-width: 1150px;
+  margin: 0 auto;
+  text-align: center;
+
+  .criptoativos-label {
+    color: #a78bfa;
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+  }
+
+  h1 {
+    color: #ffffff;
+    font-size: clamp(2.2rem, 5vw, 3.5rem);
+    font-weight: 800;
+    margin: 22px 0;
+  }
+
+  p {
+    max-width: 700px;
+    margin: 0 auto;
+    color: #b8b4c5;
+    line-height: 1.8;
+  }
+}
+
+.criptoativos-notice {
+  max-width: 700px;
+  margin: 60px auto 0;
+  padding: 35px;
+  background: #15111f;
+  border: 1px solid rgba(167, 139, 250, 0.25);
+  border-radius: 18px;
+  color: #c4b5fd;
+}
+
+@media (max-width: 600px) {
+  .criptoativos-page {
+    padding: 75px 18px;
+  }
+}
+
+/* ==========================================
+   CRYPTO NEXUS - TABELA DE CRIPTOATIVOS
+========================================== */
+
+.crypto-market {
+  margin-top: 55px;
+  padding: 30px;
+  background: #15111f;
+  border: 1px solid rgba(167, 139, 250, 0.2);
+  border-radius: 20px;
+  text-align: left;
+}
+
+.crypto-market-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 28px;
+
+  h2 {
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin-bottom: 8px;
+  }
+
+  span {
+    color: #b8b4c5;
+    font-size: 0.9rem;
+  }
+}
+
+.crypto-market-filters {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 15px;
+  margin-bottom: 25px;
+
+  input,
+  select {
+    width: 100%;
+    min-width: 0;
+    padding: 13px 15px;
+    background: #0d0a14;
+    border: 1px solid #40334f;
+    border-radius: 10px;
+    color: #fff;
+    outline: none;
+  }
+
+  input::placeholder {
+    color: #948ba4;
+  }
+
+  input:focus,
+  select:focus {
+    border-color: #a78bfa;
+  }
+
+  select option {
+    background: #15111f;
+    color: #fff;
+  }
+}
+
+.crypto-market-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.crypto-market-table {
+  width: 100%;
+  min-width: 720px;
+  border-collapse: collapse;
+
+  th {
+    padding: 18px;
+    color: #a99fb8;
+    font-size: 0.85rem;
+    font-weight: 600;
+    border-bottom: 1px solid #352b42;
+    white-space: nowrap;
+  }
+
+  td {
+    padding: 20px 18px;
+    color: #fff;
+    border-bottom: 1px solid #292235;
+    font-size: 0.95rem;
+  }
+
+  tbody tr {
+    transition: background 0.2s ease;
+  }
+
+  tbody tr:hover {
+    background: rgba(139, 92, 246, 0.08);
+  }
+}
+
+.crypto-coin {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  strong,
+  small {
+    display: block;
+  }
+
+  strong {
+    color: #fff;
+  }
+
+  small {
+    margin-top: 4px;
+    color: #a99fb8;
+  }
+}
+
+.crypto-coin-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: 800;
+}
+
+.crypto-positive {
+  color: #4ade80;
+  font-weight: 700;
+}
+
+.crypto-negative {
+  color: #f87171;
+  font-weight: 700;
+}
+
+.crypto-empty {
+  padding: 30px 15px;
+  text-align: center;
+  color: #b8b4c5;
+}
+
+@media (max-width: 900px) {
+  .crypto-market-filters {
+    grid-template-columns: 1fr 1fr;
+
+    input {
+      grid-column: 1 / -1;
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .crypto-market {
+    padding: 20px 14px;
+  }
+
+  .crypto-market-filters {
+    grid-template-columns: 1fr;
+
+    input {
+      grid-column: auto;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .crypto-market-table tbody tr {
+    transition: none;
+  }
+}
