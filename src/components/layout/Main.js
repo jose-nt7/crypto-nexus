@@ -16,28 +16,6 @@ export default function Main() {
 
     return (
       <>
-        {/* sessão 1 */}
-        <section>
-          <div className='container-principal'>
-
-          <h1 className='titulo'>Bem vindo ao CriptoNexus</h1>
-          <h2 className="texto">
-            CryptoNexus a plataforma perfeita para quem deseja explorar o universo das criptomoedas sem riscos! Sabemos que começar a investir pode parecer complicado, mas estamos aqui para simplificar sua jornada. Ao criar sua conta, você receberá 1.000 Tether Coins para simular trocas, realizar investimentos e experimentar transações reais sem gastar um centavo. Nossa missão é ajudá-lo a entender como o mercado funciona, oferecendo um ambiente seguro e intuitivo para aprender e crescer. Não perca mais tempo! Crie agora mesmo sua conta na CryptoNexus e descubra como dominar o mercado de criptomoedas. 💰✨
-          </h2>
-
-          <div className='Position-btn'>
-          <a href='/Cadastro'>
-            <button className='btn-CriarConta'>Crie Sua conta!</button>
-          </a>
-          <a href='Login'>
-            <button className='btn-fazerLogin'>Faça Login</button>
-          </a>
-          <p className='ajuste'>Ou</p>
-          </div>
-
-          </div>
-        </section>
-
         {/* sessão 2 */}
         <section className="coins-info" id="crypto-info">
           <h2>Principais Criptomoedas</h2>
